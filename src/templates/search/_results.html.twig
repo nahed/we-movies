@@ -1,0 +1,10 @@
+{# templates/search/_results.html.twig #}
+{% if results is not empty %}
+    <ul>
+        {% for result in results %}
+            <li>{{ result.name }} - {{ result.description }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}

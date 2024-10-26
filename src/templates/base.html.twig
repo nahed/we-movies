@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>{% block title %}We Movies{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+<body>
+    <header class="navbar">
+    {% block navbar %}
+        <nav class="navbar-container">
+            <h1>A Propos de We Movies</h1>
+            {# Include the search block #}
+            <div class="search-bar">
+                {{ render(controller('App\\Controller\\SearchController::search')) }}
+            </div>
+        </nav>
+    {% endblock %}
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            {% block menu %}
+
+            {% endblock %}
+        </aside>
+
+        <main class="content">
+            {% block body %}
+            
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

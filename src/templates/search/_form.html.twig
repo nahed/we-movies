@@ -1,0 +1,6 @@
+{# templates/search/_form.html.twig #}
+
+{{ form_start(form, {'attr': {'class': 'navbar-search-form'}}) }}
+    {{ form_widget(form.query, {'attr': {'placeholder': 'Search...'}}) }}
+    <button type="submit">Search</button>
+{{ form_end(form) }}

@@ -1,0 +1,8 @@
+{# Filter Section #}
+    <div class="filter-section">
+        <ul>
+            {% for genre in genres %}
+                <li><input type="checkbox" class="genre-checkbox" id="{{ genre.id }}" name="{{ genre.name }}"> {{ genre.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>

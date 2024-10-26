@@ -1,0 +1,21 @@
+{% for list in lists %}
+            <div class="movie-item">
+                <div class="movie-image">
+                    <img src="{{TMDB_IMG_URL}}t/p/w500{{ list.backdrop_path }}" alt="{{ list.title }} Backdrop path">
+                </div>
+                <div class="movie-detail">
+                <h4>{{list.title}} ({{list.release_date|date('Y')}})</h4>
+                  
+                {% if list.production_companies is defined and list.production_companies is not empty %}
+                    {% set company = list.production_companies[0] %} {# Access the first element safely #}
+        
+                    <div>{{ company.name }}</div>
+                {% endif %}
+
+                    <p>Rating: ⭐⭐⭐⭐⭐ ({{list.vote_count}} votes)</p>
+                    <p>{{list.overview}}</p>
+                    
+                    <a href="{{ path('app_movie_popup', {id: list.id}) }}" class="btn" >Lire les détails</a>
+                </div>                
+            </div>    
+{% endfor %} 

@@ -1,0 +1,57 @@
+{# list.html.twig - Movie listing template #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Movie Listings{% endblock %}
+
+{% block menu %}
+{# Filter Section #}
+    {{ render(controller('App\\Controller\\MoviesController::genres')) }}
+{% endblock %}
+
+{% block body %}
+    <section>
+    {# Video Section #}
+    <div class="video-section">
+        <div class="video-thumbnail">
+            <img src="{{YOUTUBE_IMG_URL}}{{ video.key }}/hqdefault.jpg" alt="{{ video.name }}" class="background-image" data-video-id="{{ video.key }}">
+            <div class="play-button"></div>
+            <img src="{{TMDB_IMG_URL}}t/p/w500{{ bestmovie.backdrop_path }}" class="ovelay-image"  alt="{{ bestmovie.title }} Backdrop path">
+            <p class="movie-title">{{bestmovie.title}}</p>
+        </div>
+    </div>
+
+   <!-- Video Modal -->
+    <div id="videoModal" style="display: none;">
+        <iframe id="videoIframe" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+        <div class="close-button" style="cursor: pointer; color: red; margin-top: 10px;">Close</div>
+    </div>
+
+    {# Movie List Section #}
+    <div id="movie-list" class="movie-list">
+        {% for list in lists %}
+            <div class="movie-item">
+                <div class="movie-image">
+                    <img src="{{TMDB_IMG_URL}}t/p/w500{{ list.backdrop_path }}" alt="{{ list.title }} Backdrop path">
+                </div>
+                <div class="movie-detail">
+                <h4>{{list.title}} ({{list.release_date|date('Y')}})</h4>
+                    <div>{{list.production_companies[0].name}}</div>
+                    <p>Rating: ⭐⭐⭐⭐⭐ ({{list.vote_count}} votes)</p>
+                    <p>{{list.overview}}</p>
+                    
+                    <a href="{{ path('app_movie_popup', {id: list.id}) }}" class="btn" >Lire les détails</a>
+                </div>                
+            </div>    
+        {% endfor %} 
+    </div>
+
+<div id="myModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="popupBody">
+            <!-- AJAX content will be loaded here -->
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

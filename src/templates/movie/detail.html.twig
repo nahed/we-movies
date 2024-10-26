@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+    {# Content block is overridden but left empty #}
+{% endblock %}
+
+{% block menu %}
+
+{% endblock %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block body %}
+    
+    <iframe width="320" height="180" src="{{YOUTUBE_URL}}{{video.key}}" frameborder="0" allowfullscreen></iframe>
+    <p>Film: {{movie.title}}</p> ⭐⭐⭐⭐⭐ {{movie.vote_average}} pour {{movie.vote_count}} utilisateurs
+{% endblock %}

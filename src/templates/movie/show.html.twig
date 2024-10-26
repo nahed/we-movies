@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.overview }}</p>
+    <img src="{{TMDB_IMG_URL}}t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+{% endblock %}
